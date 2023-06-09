@@ -1,0 +1,41 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate>
+    <div *ngIf="fname.invalid && fname.touched">
+        <label class="text-danger">First Name is required.</label>
+    </div>
+    <div>
+        <label>First Name</label>
+        <input type="text" name="first" #fname="ngModel" ngModel required>
+    </div>
+
+    <div *ngIf="email.invalid && email.touched">
+        <label class="text-danger">Email is required.</label>
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="text" name="email" #email="ngModel" ngModel required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    </div>
+    <div>
+        <label class="mx-2">Gender</label>
+        <input type="radio" name="gender" value="Male" required ngModel> Male
+        <input type="radio" name="gender" value="Female" required ngModel> Female
+    </div>
+    <div>
+        <!-- <button>Submit</button> -->
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>valid?</th>
+        <th>touched?</th>
+        <th>pristine?</th>
+        <th>dirty?</th>
+    </tr>
+    <tr>
+        <td>{{fname.valid}}</td>
+        <td>{{fname.touched}}</td>
+        <td>{{fname.pristine}}</td>
+        <td>{{fname.dirty}}</td>
+    </tr>
+</table>
